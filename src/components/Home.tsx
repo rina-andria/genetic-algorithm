@@ -5,10 +5,7 @@ import { GeneticAlgorithm } from '../algorithm/algorithm';
 
 const { Header, Footer, Sider, Content } = Layout;
 
-interface HomeProps {
-  firstname: string;
-  lastname: string;
-}
+interface HomeProps {}
 
 interface HomeState {
   target: string;
@@ -19,8 +16,7 @@ interface HomeState {
   executionTime: number;
 }
 
-const VALID_INPUTS =
-  'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ,.|!#$%&/()=? ';
+const VALID_INPUTS = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ,.|!#$%&/()=? ';
 
 const initialState = {
   target: 'To be or not to be.',
@@ -28,7 +24,7 @@ const initialState = {
   nbPopulation: 100,
   result: null,
   launching: false,
-  executionTime: 0
+  executionTime: 0,
 };
 
 export class Home extends React.Component<HomeProps, HomeState> {
@@ -101,9 +97,7 @@ export class Home extends React.Component<HomeProps, HomeState> {
     return (
       <React.Fragment>
         <Layout>
-          <Header className="Header">
-            Genetic Algorithm with React + Typescript + Parcel
-          </Header>
+          <Header className="Header">Genetic Algorithm with React</Header>
           <Content className="Content">
             <Card style={{ width: 400 }}>
               <label>Target text</label>
@@ -162,7 +156,7 @@ export class Home extends React.Component<HomeProps, HomeState> {
                   `Best fitness: ${this.state.result.bestFitness}`,
                   `Best genes: ${this.state.result.bestGenes.join('')}`,
                   `Generation: ${this.state.result.generation}`,
-                  `Execution time: ${this.state.executionTime} ms`
+                  `Execution time: ${this.state.executionTime} ms`,
                 ]}
                 renderItem={(item: string) => <List.Item>{item}</List.Item>}
               />
