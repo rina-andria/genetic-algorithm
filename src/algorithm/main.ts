@@ -40,7 +40,7 @@ export class Main<T> {
     }
 
     score /= this.targetArray.length;
-    score = (Math.pow(2, score) - 1) / 1;
+    score = Math.pow(2, score) - 1;
     return score;
   };
 
