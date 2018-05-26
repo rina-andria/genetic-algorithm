@@ -1,24 +1,17 @@
 import { GeneticAlgorithm } from './algorithm';
 
 export class Main<T> {
-  populationSize = 50;
   mutationRate = 0.01;
   elitism = 5;
-  targetArray: Array<T>;
-  validInputs: Array<T>;
 
   ga: GeneticAlgorithm<T>;
 
   constructor(
-    populationSize: number,
-    targetArray: Array<T>,
-    validInputs: Array<T>,
+    public populationSize: number,
+    public targetArray: Array<T>,
+    public validInputs: Array<T>,
     randomGene: () => T
   ) {
-    this.populationSize = populationSize;
-    this.targetArray = targetArray;
-    this.validInputs = validInputs;
-
     this.ga = new GeneticAlgorithm<T>(
       this.populationSize,
       targetArray.length,
@@ -40,7 +33,7 @@ export class Main<T> {
     }
 
     score /= this.targetArray.length;
-    score = (Math.pow(2, score) - 1) / 1;
+    score = Math.pow(2, score) - 1;
     return score;
   };
 

@@ -16,7 +16,8 @@ interface HomeState {
   executionTime: number;
 }
 
-const VALID_INPUTS = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ,.|!#$%&/()=? ';
+const VALID_INPUTS =
+  'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ,.|!#$%&/()=? ';
 
 const initialState = {
   target: 'To be or not to be.',
@@ -24,7 +25,7 @@ const initialState = {
   nbPopulation: 100,
   result: null,
   launching: false,
-  executionTime: 0,
+  executionTime: 0
 };
 
 export class Home extends React.Component<HomeProps, HomeState> {
@@ -60,8 +61,6 @@ export class Home extends React.Component<HomeProps, HomeState> {
       this.randomCharacter
     );
 
-    console.time('Iteration');
-
     for (let index = 0; index < this.state.maxIteration; index++) {
       launcher.next();
       if (launcher.ga.bestFitness === 1) {
@@ -73,12 +72,6 @@ export class Home extends React.Component<HomeProps, HomeState> {
     }
 
     this.setState({ result: launcher.ga, executionTime: new Date() - start });
-
-    console.timeEnd('Iteration');
-    console.log('Best fitness', launcher.ga.bestFitness);
-    console.log('Generic Algorithm', launcher.ga.bestGenes);
-    console.log('Generation', launcher.ga.generation);
-    console.log('Population', launcher.ga.newPopulation);
 
     this.setState({ launching: false });
   };
@@ -133,7 +126,7 @@ export class Home extends React.Component<HomeProps, HomeState> {
                 onClick={this.handleLaunchSearch}
                 disabled={this.state.launching}
               >
-                Launch search
+                Search
               </Button>
 
               <Button
@@ -145,8 +138,6 @@ export class Home extends React.Component<HomeProps, HomeState> {
                 Reset
               </Button>
             </Card>
-          </Content>
-          <Footer className="Footer">
             {this.state.result && (
               <List
                 className="Result"
@@ -156,12 +147,12 @@ export class Home extends React.Component<HomeProps, HomeState> {
                   `Best fitness: ${this.state.result.bestFitness}`,
                   `Best genes: ${this.state.result.bestGenes.join('')}`,
                   `Generation: ${this.state.result.generation}`,
-                  `Execution time: ${this.state.executionTime} ms`,
+                  `Execution time: ${this.state.executionTime} ms`
                 ]}
                 renderItem={(item: string) => <List.Item>{item}</List.Item>}
               />
             )}
-          </Footer>
+          </Content>
         </Layout>
       </React.Fragment>
     );

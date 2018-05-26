@@ -23,7 +23,7 @@ export class GeneticAlgorithm<T> {
     elitism: number,
     mutationRate = 0.01
   ) {
-    this.generation = 1;
+    this.generation = 0;
     this.elitism = elitism;
     this.mutationRate = mutationRate;
     this.individualSize = individualSize;
